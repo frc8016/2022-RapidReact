@@ -14,7 +14,6 @@ import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -32,15 +31,14 @@ public class RobotContainer {
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(driveBase, driverStick);
   private final RunIntake runIntake = new RunIntake(intake);
   private final RunIndex runIndex = new RunIndex(index);
-  
-  private final JoystickButton joy1 = new JoystickButton(driverStick, Constants.BUTTON_1);
-  private final JoystickButton joy2 = new JoystickButton(driverStick, Constants.BUTTON_2);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
+   configureButtonBindings();
     driveBase.setDefaultCommand(arcadeDrive);
+    intake.setDefaultCommand(runIntake);
+    index.setDefaultCommand(runIndex);
   }
 
   /**g
@@ -50,8 +48,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    joy1.toggleWhenPressed(runIntake);
-    joy2.toggleWhenPressed(runIndex);
+
   }
 
   /**
