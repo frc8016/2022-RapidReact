@@ -7,10 +7,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.ActuateClimb;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.PrimativeRunShooter;
 import frc.robot.commands.RunIndex;
 import frc.robot.commands.RunIntake;
+import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Intake;
@@ -30,11 +32,13 @@ public class RobotContainer {
   private final Intake intake = new Intake();
   private final Index index = new Index();
   private final Shooter shooter = new Shooter();
+  private final Climb climb = new Climb();
 
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(driveBase, driverStick);
   private final RunIntake runIntake = new RunIntake(intake);
   private final RunIndex runIndex = new RunIndex(index);
   private final PrimativeRunShooter primativeRunShooter = new PrimativeRunShooter(shooter);
+  private final ActuateClimb actuateClimb = new ActuateClimb(climb);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */

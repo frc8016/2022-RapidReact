@@ -39,6 +39,7 @@ public static final int CLIMB_SPARKMAX_PORT = 3;
 //Scalars
 public static final double INTAKE_SPEED_SCALAR = -.4;
 public static final double INDEX_SPEED_SCALAR = .2;
+public static final double CLIMB_SPEED_SCALAR = 0;
 
 //IO
 public static final int BUTTON_1 = 1;
@@ -47,6 +48,7 @@ public static final int L_PNEUMATIC_FORWARD_CHANNEL = 1;
 public static final int L_PNEUMATIC_REVERSE_CHANNEL = 0;
 public static final int R_PNEUMATIC_FORWARD_CHANNEL = 2;
 public static final int R_PNEUMATIC_REVERSE_CHANNEL = 3;
+
 
 
 
