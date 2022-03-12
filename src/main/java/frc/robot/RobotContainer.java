@@ -7,14 +7,17 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.ActuateClimb;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.PrimativeRunShooter;
 import frc.robot.commands.RunIndex;
 import frc.robot.commands.RunIntake;
+import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -28,19 +31,23 @@ public class RobotContainer {
   private final DriveBase driveBase = new DriveBase();
   private final Intake intake = new Intake();
   private final Index index = new Index();
+  private final Shooter shooter = new Shooter();
+  private final Climb climb = new Climb();
 
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(driveBase, driverStick);
   private final RunIntake runIntake = new RunIntake(intake);
   private final RunIndex runIndex = new RunIndex(index);
-  
-  private final JoystickButton joy1 = new JoystickButton(driverStick, Constants.BUTTON_1);
-  private final JoystickButton joy2 = new JoystickButton(driverStick, Constants.BUTTON_2);
+  private final PrimativeRunShooter primativeRunShooter = new PrimativeRunShooter(shooter);
+  private final ActuateClimb actuateClimb = new ActuateClimb(climb);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
+   configureButtonBindings();
     driveBase.setDefaultCommand(arcadeDrive);
+    intake.setDefaultCommand(runIntake);
+    index.setDefaultCommand(runIndex);
   }
 
   /**g
@@ -50,8 +57,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    joy1.toggleWhenPressed(runIntake);
-    joy2.toggleWhenPressed(runIndex);
+
   }
 
   /**
