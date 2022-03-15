@@ -21,6 +21,7 @@ public static final int RIGHT_FRONT_DRIVE_PORT = 3;
 public static final int RIGHT_BACK_DRIVE_PORT = 0;
 public static final int L_SHOOTER_PORT = 10;
 public static final int R_SHOOTER_PORT = 11;
+public static final int CLIMB_SPARKMAX_PORT = 12;
 
 
 
@@ -34,18 +35,18 @@ public static final int DRIVERSTICK_Y_AXIS_PORT = 1;
 public static final int INTAKE_SPARK_PORT = 2;
 public static final int INDEX_R_SPARK_PORT = 0;
 public static final int INDEX_L_SPARK_PORT = 1;
-public static final int CLIMB_SPARKMAX_PORT = 3;
 
 //Scalars
-public static final double INTAKE_SPEED_SCALAR = -.4;
+public static final double INTAKE_SPEED_SCALAR = -.6;
 public static final double INDEX_SPEED_SCALAR = .2;
-public static final double CLIMB_SPEED_SCALAR = 0;
+public static final double CLIMB_SPEED_SCALAR = .7;
+public static final double FLYWHEEL_LOW_PORT_SCALAR = .415;
 
 //IO
 public static final int BUTTON_1 = 1;
 public static final int BUTTON_2 = 2;
-public static final int L_PNEUMATIC_FORWARD_CHANNEL = 1;
-public static final int L_PNEUMATIC_REVERSE_CHANNEL = 0;
+public static final int L_PNEUMATIC_FORWARD_CHANNEL = 0;
+public static final int L_PNEUMATIC_REVERSE_CHANNEL = 1;
 public static final int R_PNEUMATIC_FORWARD_CHANNEL = 2;
 public static final int R_PNEUMATIC_REVERSE_CHANNEL = 3;
 

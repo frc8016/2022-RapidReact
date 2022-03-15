@@ -35,7 +35,7 @@ public class DriveBase extends SubsystemBase {
 
   public void arcadeDrive(double speed, double rot){
     rightControllerGroup.setInverted(true);
-    differentialDrive.arcadeDrive(speed, rot);
+    differentialDrive.arcadeDrive(-speed, rot);
   }
 
   @Override

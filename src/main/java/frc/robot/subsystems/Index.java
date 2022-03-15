@@ -24,6 +24,6 @@ public class Index extends SubsystemBase {
   public void setSpeed(double speed){
     indexMotorL.setInverted(true);
     indexMotorL.set(speed);
-    indexMotorR.set(speed);
+    indexMotorR.set(-speed);
   }
 }

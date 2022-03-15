@@ -9,6 +9,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.Shooter;
 
 public class PrimativeRunShooter extends CommandBase {
@@ -40,7 +41,7 @@ public class PrimativeRunShooter extends CommandBase {
     if(speedVal >= -1 && speedVal <= 1){
         speed = speedVal;
     }
-    m_shooter.setFlywheelSpeed(speed);
+    m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_LOW_PORT_SCALAR);
   }
 
   // Called once the command ends or is interrupted.

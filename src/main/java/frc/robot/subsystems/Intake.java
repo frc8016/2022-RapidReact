@@ -21,8 +21,8 @@ public class Intake extends SubsystemBase {
     intakeRollers = new Spark(Constants.INTAKE_SPARK_PORT);
     leftSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.L_PNEUMATIC_FORWARD_CHANNEL, Constants.L_PNEUMATIC_REVERSE_CHANNEL);
     rightSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.R_PNEUMATIC_FORWARD_CHANNEL, Constants.R_PNEUMATIC_REVERSE_CHANNEL);
-    leftSolenoid.set(Value.kOff);
-    rightSolenoid.set(Value.kOff);
+    leftSolenoid.set(Value.kReverse);
+    rightSolenoid.set(Value.kReverse);
   }
 
   public void setRollerSpeed(double speed){
@@ -37,6 +37,10 @@ public class Intake extends SubsystemBase {
   public void retractIntake(){
     leftSolenoid.set(Value.kReverse);
     rightSolenoid.set(Value.kReverse);
+  }
+  public void offIntake(){
+    leftSolenoid.set(Value.kOff);
+    rightSolenoid.set(Value.kOff);
   }
 
   @Override
