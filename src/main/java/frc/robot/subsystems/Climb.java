@@ -4,17 +4,16 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Climb extends SubsystemBase {
-  private Spark climbMotor;
+  private CANSparkMax climbMotor = new CANSparkMax(Constants.CLIMB_SPARKMAX_PORT, MotorType.kBrushed);
   /** Creates a new Climb. */
   public Climb() {
-    climbMotor = new Spark(Constants.CLIMB_SPARKMAX_PORT);
   }
 
 

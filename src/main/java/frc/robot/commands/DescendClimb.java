@@ -8,13 +8,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Climb;
 
-public class ActuateClimb extends CommandBase {
+public class DescendClimb extends CommandBase {
   private Climb m_climb;
-  /** Creates a new ActuateClimb. */
-  public ActuateClimb(Climb climb) {
+  /** Creates a new DescendClimb. */
+  public DescendClimb(Climb climb) {
     m_climb = climb;
     addRequirements(climb);
-
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -25,14 +24,13 @@ public class ActuateClimb extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_climb.setClimbSpeed(Constants.CLIMB_SPEED_SCALAR);
+    m_climb.setClimbSpeed(-Constants.CLIMB_SPEED_SCALAR);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_climb.setClimbSpeed(0);
-
   }
 
   // Returns true when the command should end.
