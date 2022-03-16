@@ -14,8 +14,10 @@ import frc.robot.commands.ExtendIntake;
 import frc.robot.commands.OffIntake;
 import frc.robot.commands.PrimativeRunShooter;
 import frc.robot.commands.RetractIntake;
+import frc.robot.commands.ReverseIntake;
 import frc.robot.commands.RunIndex;
 import frc.robot.commands.RunIntake;
+import frc.robot.commands.StopIntakeRollers;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Index;
@@ -48,6 +50,8 @@ public class RobotContainer {
   private final OffIntake offIntake = new OffIntake(intake);
   private final AscendClimb ascendClimb = new AscendClimb(climb);
   private final DescendClimb descendClimb = new DescendClimb(climb);
+  private final ReverseIntake reverseIntake = new ReverseIntake(intake);
+  private final StopIntakeRollers stopIntakeRollers = new StopIntakeRollers(intake);
 
 
   private final JoystickButton joy1 = new JoystickButton(driverStick, 1);
@@ -58,6 +62,8 @@ public class RobotContainer {
   private final JoystickButton joy6 = new JoystickButton(driverStick, 6);
   private final JoystickButton joy7 = new JoystickButton(driverStick, 7);
   private final JoystickButton joy8 = new JoystickButton(driverStick, 8);
+  private final JoystickButton joy9 = new JoystickButton(driverStick, 9);
+  private final JoystickButton joy10 = new JoystickButton(driverStick, 10);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -77,11 +83,15 @@ public class RobotContainer {
     joy3.whenPressed(extendIntake);
     joy4.whenPressed(retractIntake);
     joy5.whenPressed(offIntake);
-    joy2.toggleWhenPressed(runIntake);
+    joy2.whenPressed(runIntake);
     joy1.whileHeld(primativeRunShooter);
     joy6.toggleWhenPressed(runIndex);
     joy7.whileHeld(ascendClimb);
     joy8.whileHeld(descendClimb);
+    joy9.whileHeld(reverseIntake, true);
+    joy10.whenPressed(stopIntakeRollers);
+
+
 
 
 
