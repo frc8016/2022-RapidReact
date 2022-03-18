@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AscendClimb;
+import frc.robot.commands.AutonomousApproach;
 import frc.robot.commands.DescendClimb;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ExtendIntake;
@@ -52,6 +53,7 @@ public class RobotContainer {
   private final DescendClimb descendClimb = new DescendClimb(climb);
   private final ReverseIntake reverseIntake = new ReverseIntake(intake);
   private final StopIntakeRollers stopIntakeRollers = new StopIntakeRollers(intake);
+  private final AutonomousApproach autonomousApproach = new AutonomousApproach(driveBase);
 
 
   private final JoystickButton joy1 = new JoystickButton(driverStick, 1);
@@ -71,6 +73,7 @@ public class RobotContainer {
     // Configure the button bindings
    configureButtonBindings();
     driveBase.setDefaultCommand(arcadeDrive);
+    index.setDefaultCommand(runIndex);
   }
 
   /**g
@@ -80,16 +83,15 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    joy3.whenPressed(extendIntake);
-    joy4.whenPressed(retractIntake);
-    joy5.whenPressed(offIntake);
-    joy2.whenPressed(runIntake);
-    joy1.whileHeld(primativeRunShooter);
-    joy6.toggleWhenPressed(runIndex);
-    joy7.whileHeld(ascendClimb);
-    joy8.whileHeld(descendClimb);
-    joy9.whileHeld(reverseIntake, true);
-    joy10.whenPressed(stopIntakeRollers);
+  joy1.whileHeld(primativeRunShooter);
+  joy2.whenPressed(stopIntakeRollers);
+  joy3.whileHeld(reverseIntake, true);
+  joy4.whenPressed(retractIntake);
+  joy5.whenPressed(runIntake);
+  joy6.toggleWhenPressed(extendIntake);
+  joy7.whileHeld(ascendClimb);
+  joy8.whileHeld(descendClimb);
+
 
 
 
@@ -104,6 +106,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return arcadeDrive;
+    return autonomousApproach;
   }
 }
