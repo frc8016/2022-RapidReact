@@ -46,6 +46,7 @@ public class PrimativeRunShooter extends CommandBase {
     m_shooter.cycleFeed(Constants.SHOOTER_FEED_SPEED);
     SmartDashboard.putNumber("Left Shooter RPM", m_shooter.getLEVelocity());
     SmartDashboard.putNumber("Right Shooter RPM", m_shooter.getREVelocity());
+//this is a test
   }
 
   // Called once the command ends or is interrupted.
