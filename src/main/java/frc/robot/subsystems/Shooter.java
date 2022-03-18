@@ -67,7 +67,6 @@ public class Shooter extends SubsystemBase {
 
   }
   public boolean cycleFeed(double speed){
-    System.out.println(feedLimitSwitch.get());
     if(feedLimitSwitch.get()){
       hasOpened = false;
       feedMotor.set(speed);

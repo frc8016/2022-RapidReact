@@ -43,7 +43,9 @@ public static final int INDEX_L_SPARK_PORT = 1;
 public static final double INTAKE_SPEED_SCALAR = -.6;
 public static final double INDEX_SPEED_SCALAR = .2;
 public static final double CLIMB_SPEED_SCALAR = .7;
-public static final double FLYWHEEL_LOW_PORT_SCALAR = .415;
+public static final double FLYWHEEL_LOW_PORT_SCALAR = .45;
+public static final double SHOOTER_FEED_SPEED = -.5;
+public static final double AUTONOMOUS_DRIVE_SPEED = .5;
 
 //DIO
 public static final int L_PNEUMATIC_FORWARD_CHANNEL = 0;
@@ -51,7 +53,7 @@ public static final int L_PNEUMATIC_REVERSE_CHANNEL = 1;
 public static final int R_PNEUMATIC_FORWARD_CHANNEL = 2;
 public static final int R_PNEUMATIC_REVERSE_CHANNEL = 3;
 public static final int FEED_LIMIT_SWITCH_PORT = 0;
-public static final double SHOOTER_FEED_SPEED = -.5;
+
 
 
 
