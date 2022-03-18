@@ -42,7 +42,7 @@ public class PrimativeRunShooter extends CommandBase {
     if(speedVal >= -1 && speedVal <= 1){
         speed = speedVal;
     }
-    // m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_LOW_PORT_SCALAR);
+    m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_LOW_PORT_SCALAR);
     m_shooter.cycleFeed(Constants.SHOOTER_FEED_SPEED);
     SmartDashboard.putNumber("Left Shooter RPM", m_shooter.getLEVelocity());
     SmartDashboard.putNumber("Right Shooter RPM", m_shooter.getREVelocity());
