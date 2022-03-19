@@ -12,6 +12,7 @@ import frc.robot.commands.AutonomousApproach;
 import frc.robot.commands.DescendClimb;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ExtendIntake;
+import frc.robot.commands.High_Port_Shooter;
 import frc.robot.commands.OffIntake;
 import frc.robot.commands.PrimativeRunShooter;
 import frc.robot.commands.RetractIntake;
@@ -54,6 +55,7 @@ public class RobotContainer {
   private final ReverseIntake reverseIntake = new ReverseIntake(intake);
   private final StopIntakeRollers stopIntakeRollers = new StopIntakeRollers(intake);
   private final AutonomousApproach autonomousApproach = new AutonomousApproach(driveBase);
+  private final High_Port_Shooter high_Port_Shooter = new High_Port_Shooter(shooter);
 
 
   private final JoystickButton joy1 = new JoystickButton(driverStick, 1);
@@ -91,6 +93,7 @@ public class RobotContainer {
   joy6.toggleWhenPressed(extendIntake);
   joy7.whileHeld(ascendClimb);
   joy8.whileHeld(descendClimb);
+  joy10.whileHeld(high_Port_Shooter);
 
 
 
