@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Shooter;
 
-public class High_Port_Shooter extends CommandBase {
+public class LowPortShoot extends CommandBase {
   private Shooter m_shooter;
   private double speed = 0, speedVal = 0;
 
@@ -23,7 +23,7 @@ public class High_Port_Shooter extends CommandBase {
 
 
   /** Creates a new PrimativeRunShooter. */
-  public High_Port_Shooter(Shooter shooter) {
+  public LowPortShoot(Shooter shooter) {
     m_shooter = shooter;
     addRequirements(shooter);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -42,7 +42,7 @@ public class High_Port_Shooter extends CommandBase {
     if(speedVal >= -1 && speedVal <= 1){
         speed = speedVal;
     }
-    m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_HIGH_PORT_SCALAR);
+    m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_LOW_PORT_SCALAR);
     m_shooter.cycleFeed(Constants.SHOOTER_FEED_SPEED);
     SmartDashboard.putNumber("Left Shooter RPM", m_shooter.getLEVelocity());
     SmartDashboard.putNumber("Right Shooter RPM", m_shooter.getREVelocity());
