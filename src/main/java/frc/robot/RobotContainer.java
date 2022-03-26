@@ -8,13 +8,14 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.AscendClimb;
-import frc.robot.commands.AutonomousApproach;
+import frc.robot.commands.AutonomousCommand;
+import frc.robot.commands.AutonomousRetreat;
 import frc.robot.commands.DescendClimb;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ExtendIntake;
-import frc.robot.commands.High_Port_Shooter;
+import frc.robot.commands.HighPortShoot;
 import frc.robot.commands.OffIntake;
-import frc.robot.commands.PrimativeRunShooter;
+import frc.robot.commands.LowPortShoot;
 import frc.robot.commands.RetractIntake;
 import frc.robot.commands.ReverseIntake;
 import frc.robot.commands.RunIndex;
@@ -46,7 +47,7 @@ public class RobotContainer {
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(driveBase, driverStick);
   private final RunIntake runIntake = new RunIntake(intake);
   private final RunIndex runIndex = new RunIndex(index);
-  private final PrimativeRunShooter primativeRunShooter = new PrimativeRunShooter(shooter);
+  private final LowPortShoot primativeRunShooter = new LowPortShoot(shooter);
   private final ExtendIntake extendIntake = new ExtendIntake(intake);
   private final RetractIntake retractIntake = new RetractIntake(intake);
   private final OffIntake offIntake = new OffIntake(intake);
@@ -54,8 +55,9 @@ public class RobotContainer {
   private final DescendClimb descendClimb = new DescendClimb(climb);
   private final ReverseIntake reverseIntake = new ReverseIntake(intake);
   private final StopIntakeRollers stopIntakeRollers = new StopIntakeRollers(intake);
-  private final AutonomousApproach autonomousApproach = new AutonomousApproach(driveBase);
-  private final High_Port_Shooter high_Port_Shooter = new High_Port_Shooter(shooter);
+  private final AutonomousRetreat autonomousApproach = new AutonomousRetreat(driveBase);
+  private final HighPortShoot high_Port_Shooter = new HighPortShoot(shooter);
+  private final AutonomousCommand autonomousCommand = new AutonomousCommand(driveBase, shooter);
 
 
   private final JoystickButton joy1 = new JoystickButton(driverStick, 1);
@@ -109,6 +111,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return autonomousApproach;
+    return autonomousCommand;
   }
 }

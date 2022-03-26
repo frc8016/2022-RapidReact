@@ -7,10 +7,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveBase;
 
-public class AutonomousApproach extends CommandBase {
+public class AutonomousRetreat extends CommandBase {
   private DriveBase m_driveBase;
   /** Creates a new AutonomousApproach. */
-  public AutonomousApproach(DriveBase driveBase) {
+  public AutonomousRetreat(DriveBase driveBase) {
     m_driveBase = driveBase;
     addRequirements(driveBase);
 
@@ -36,6 +36,6 @@ public class AutonomousApproach extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_driveBase.getAtLocation();
   }
 }

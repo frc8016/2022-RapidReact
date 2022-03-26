@@ -26,6 +26,7 @@ public class DriveBase extends SubsystemBase {
   private DifferentialDrive differentialDrive;
   private double initalLEncoderValue = 0;
   private double initialRencoderValue = 0;
+  private boolean atLocation = false;
 
   public DriveBase() {
     this.driveLeftFront = new WPI_TalonSRX(Constants.LEFT_FRONT_DRIVE_PORT);
@@ -55,6 +56,10 @@ public class DriveBase extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
+  public boolean getAtLocation(){
+    return this.atLocation;
+  }
+
 
 
   public boolean driveToDistance(double distance_in){
@@ -64,6 +69,7 @@ public class DriveBase extends SubsystemBase {
     }
     else{
       differentialDrive.tankDrive(0, 0);
+      atLocation = true;
     }
     return (distance_in - currentDistance > 0);
 

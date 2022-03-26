@@ -13,17 +13,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Shooter;
 
-public class PrimativeRunShooter extends CommandBase {
+public class HighPortShoot extends CommandBase {
   private Shooter m_shooter;
-  private double speed = 0, speedVal = 0;
-
-  private NetworkTableInstance inst = NetworkTableInstance.getDefault();
-  private NetworkTable datatable = inst.getTable("shooter_table");
-  private NetworkTableEntry flywheelSpeedScalar = datatable.getEntry("flywheel_speed_scalar");
 
 
   /** Creates a new PrimativeRunShooter. */
-  public PrimativeRunShooter(Shooter shooter) {
+  public HighPortShoot(Shooter shooter) {
     m_shooter = shooter;
     addRequirements(shooter);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -38,15 +33,10 @@ public class PrimativeRunShooter extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    speedVal = flywheelSpeedScalar.getDouble(0);
-    if(speedVal >= -1 && speedVal <= 1){
-        speed = speedVal;
-    }
-    m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_LOW_PORT_SCALAR);
+    m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_HIGH_PORT_SCALAR);
     m_shooter.cycleFeed(Constants.SHOOTER_FEED_SPEED);
     SmartDashboard.putNumber("Left Shooter RPM", m_shooter.getLEVelocity());
     SmartDashboard.putNumber("Right Shooter RPM", m_shooter.getREVelocity());
-//this is a test
   }
 
   // Called once the command ends or is interrupted.
@@ -59,6 +49,6 @@ public class PrimativeRunShooter extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_shooter.getFeedFinished();
   }
 }

@@ -22,6 +22,7 @@ public class Shooter extends SubsystemBase {
   private DigitalInput feedLimitSwitch = new DigitalInput(Constants.FEED_LIMIT_SWITCH_PORT);
 
   private boolean hasOpened = true;
+  private boolean feedFinished = false;
 
   /** Creates a new Shooter. */
   public Shooter() {}
@@ -58,9 +59,10 @@ public class Shooter extends SubsystemBase {
     }
 
   }
-
-
-
+  
+  public boolean getFeedFinished(){
+    return this.feedFinished;
+  }
 
   public void setFeedMotor(double speed){
     feedMotor.set(speed);
@@ -78,9 +80,11 @@ public class Shooter extends SubsystemBase {
       feedMotor.set(speed);
       if(feedLimitSwitch.get()){
         hasOpened = false;
+        feedFinished = true;
         return true;
         }
       }
+    feedFinished = false;
     return false;
 
   }
