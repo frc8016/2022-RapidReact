@@ -56,7 +56,7 @@ public class RobotContainer {
   private final ReverseIntake reverseIntake = new ReverseIntake(intake);
   private final StopIntakeRollers stopIntakeRollers = new StopIntakeRollers(intake);
   private final AutonomousRetreat autonomousApproach = new AutonomousRetreat(driveBase);
-  private final HighPortShoot high_Port_Shooter = new HighPortShoot(shooter);
+  private final HighPortShoot high_Port_Shooter = new HighPortShoot(shooter, 1);
   private final AutonomousCommand autonomousCommand = new AutonomousCommand(driveBase, shooter);
 
 

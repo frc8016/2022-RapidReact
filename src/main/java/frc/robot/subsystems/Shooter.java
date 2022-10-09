@@ -68,7 +68,7 @@ public class Shooter extends SubsystemBase {
     feedMotor.set(speed);
 
   }
-  public boolean cycleFeed(double speed){
+  public boolean cycleFeed(double speed, int cycles){
     if(feedLimitSwitch.get()){
       hasOpened = false;
       feedMotor.set(speed);
@@ -86,9 +86,23 @@ public class Shooter extends SubsystemBase {
       }
     feedFinished = false;
     return false;
-
   }
 
+  public boolean feed(double speed, int cycles){
+    for(int i = 0; i< cycles; i++){
+      boolean isOpen = false;
+      while(true){
+        feedMotor.set(speed);
+        if(!feedLimitSwitch.get()){
+          isOpen = true; 
+        }
+        if(isOpen == true && feedLimitSwitch.get()){
+          break;
+        }
 
-
+      }
+    }
+    return true; 
+  }
 }
+

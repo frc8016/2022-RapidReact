@@ -15,11 +15,14 @@ import frc.robot.subsystems.Shooter;
 
 public class HighPortShoot extends CommandBase {
   private Shooter m_shooter;
+  private boolean isFinished = false; 
+  int numShots; 
 
 
   /** Creates a new PrimativeRunShooter. */
-  public HighPortShoot(Shooter shooter) {
+  public HighPortShoot(Shooter shooter, int numShots) {
     m_shooter = shooter;
+    this.numShots = numShots;
     addRequirements(shooter);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -34,7 +37,7 @@ public class HighPortShoot extends CommandBase {
   @Override
   public void execute() {
     m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_HIGH_PORT_SCALAR);
-    m_shooter.cycleFeed(Constants.SHOOTER_FEED_SPEED);
+    isFinished = m_shooter.feed(Constants.SHOOTER_FEED_SPEED, numShots);
     SmartDashboard.putNumber("Left Shooter RPM", m_shooter.getLEVelocity());
     SmartDashboard.putNumber("Right Shooter RPM", m_shooter.getREVelocity());
   }
@@ -49,6 +52,6 @@ public class HighPortShoot extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_shooter.getFeedFinished();
+    return isFinished;
   }
 }

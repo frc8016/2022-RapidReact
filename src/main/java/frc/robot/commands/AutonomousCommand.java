@@ -20,6 +20,6 @@ public class AutonomousCommand extends SequentialCommandGroup {
     this.m_shooter = shooter;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new HighPortShoot(shooter), new AutonomousRetreat(driveBase));
+    addCommands(new HighPortShoot(shooter, 3), new AutonomousRetreat(driveBase));
   }
 }
