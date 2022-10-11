@@ -57,7 +57,7 @@ public class RobotContainer {
   private final StopIntakeRollers stopIntakeRollers = new StopIntakeRollers(intake);
   private final AutonomousRetreat autonomousApproach = new AutonomousRetreat(driveBase);
   private final HighPortShoot high_Port_Shooter = new HighPortShoot(shooter, 1);
-  private final AutonomousCommand autonomousCommand = new AutonomousCommand(driveBase, shooter);
+  private final AutonomousCommand autonomousCommand = new AutonomousCommand(driveBase, shooter, index);
 
 
   private final JoystickButton joy1 = new JoystickButton(driverStick, 1);

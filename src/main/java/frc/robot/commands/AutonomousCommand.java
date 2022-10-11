@@ -4,8 +4,12 @@
 
 package frc.robot.commands;
 
+import java.net.Inet4Address;
+
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Shooter;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -14,12 +18,14 @@ import frc.robot.subsystems.Shooter;
 public class AutonomousCommand extends SequentialCommandGroup {
   private DriveBase m_driveBase;
   private Shooter m_shooter;
+  private Index m_index; 
   /** Creates a new AutonomousCommand. */
-  public AutonomousCommand(DriveBase driveBase, Shooter shooter) {
+  public AutonomousCommand(DriveBase driveBase, Shooter shooter, Index index) {
     this.m_driveBase = driveBase;
     this.m_shooter = shooter;
+    this.m_index = index;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new HighPortShoot(shooter, 3), new AutonomousRetreat(driveBase));
+    addCommands(new ParallelCommandGroup(new HighPortShoot(shooter, 3), new RunIndex(index)), new AutonomousRetreat(driveBase));
   }
 }
