@@ -7,6 +7,7 @@ package frc.robot.commands;
 import java.net.Inet4Address;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Index;
@@ -26,6 +27,6 @@ public class AutonomousCommand extends SequentialCommandGroup {
     this.m_index = index;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new ParallelCommandGroup(new HighPortShoot(shooter, 3), new RunIndex(index)), new AutonomousRetreat(driveBase));
+    addCommands(new ParallelRaceGroup(new HighPortShoot(shooter, 4), new RunIndex(index)), new AutonomousRetreat(driveBase));
   }
 }
