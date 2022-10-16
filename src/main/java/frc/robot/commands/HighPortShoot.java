@@ -37,7 +37,7 @@ public class HighPortShoot extends CommandBase {
   @Override
   public void execute() {
     m_shooter.setFlywheelSpeed(Constants.FLYWHEEL_HIGH_PORT_SCALAR);
-    isFinished = m_shooter.feed(Constants.SHOOTER_FEED_SPEED, numShots);
+    isFinished = m_shooter.newFeed(Constants.SHOOTER_FEED_SPEED, numShots);
     SmartDashboard.putNumber("Left Shooter RPM", m_shooter.getLEVelocity());
     SmartDashboard.putNumber("Right Shooter RPM", m_shooter.getREVelocity());
   }

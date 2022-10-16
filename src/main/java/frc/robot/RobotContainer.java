@@ -11,6 +11,7 @@ import frc.robot.commands.AscendClimb;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.AutonomousRetreat;
 import frc.robot.commands.DescendClimb;
+import frc.robot.commands.DriveHighPort;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ExtendIntake;
 import frc.robot.commands.HighPortShoot;
@@ -27,6 +28,10 @@ import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -58,6 +63,7 @@ public class RobotContainer {
   private final AutonomousRetreat autonomousApproach = new AutonomousRetreat(driveBase);
   private final HighPortShoot high_Port_Shooter = new HighPortShoot(shooter, 1);
   private final AutonomousCommand autonomousCommand = new AutonomousCommand(driveBase, shooter, index);
+  private final DriveHighPort driveHighPort = new DriveHighPort(driveBase);
 
 
   private final JoystickButton joy1 = new JoystickButton(driverStick, 1);
@@ -90,8 +96,9 @@ public class RobotContainer {
   joy1.whileHeld(primativeRunShooter);
   joy2.whenPressed(stopIntakeRollers);
   joy3.whileHeld(reverseIntake, true);
+  joy3.whenReleased(runIntake);
   joy4.whenPressed(retractIntake);
-  joy5.whenPressed(runIntake);
+ // joy5.whenPressed(driveHighPort);
   joy6.toggleWhenPressed(extendIntake);
   joy7.whileHeld(ascendClimb);
   joy8.whileHeld(descendClimb);
@@ -111,6 +118,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return autonomousCommand;
-  }
+    return new SequentialCommandGroup(new ParallelDeadlineGroup(new HighPortShoot(shooter, 4), new RunIndex(index)), new AutonomousRetreat(driveBase));
+  //return new HighPortShoot(shooter, 4);
+
+
+}
 }

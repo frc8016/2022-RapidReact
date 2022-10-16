@@ -80,6 +80,32 @@ public class DriveBase extends SubsystemBase {
     driveLeftBack.setSelectedSensorPosition(0);
   }
 
+  public boolean LDriveToDistance(double distance_in, double speed){
+    double currentLDistance = (Math.abs(driveLeftBack.getSelectedSensorPosition())/4096) * 18.84;
+    if(distance_in - currentLDistance >0){
+      differentialDrive.tankDrive(-Constants.AUTONOMOUS_DRIVE_SPEED, Constants.AUTONOMOUS_DRIVE_SPEED);
+    }
+    else{
+      differentialDrive.tankDrive(0, 0);
+      atLocation = true;
+    }
+    return (distance_in - currentLDistance > 0);
+
+  }
+  public boolean RDriveToDistance(double distance_in, double speed){
+    double currentLDistance = (Math.abs(driveRightFront.getSelectedSensorPosition())/4096) * 18.84;
+    if(distance_in - currentLDistance >0){
+      differentialDrive.tankDrive(-Constants.AUTONOMOUS_DRIVE_SPEED, Constants.AUTONOMOUS_DRIVE_SPEED);
+    }
+    else{
+      differentialDrive.tankDrive(0, 0);
+      atLocation = true;
+    }
+    return (distance_in - currentLDistance > 0);
+
+  }
+
+
   @Override
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation

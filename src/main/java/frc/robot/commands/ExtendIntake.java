@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
+import frc.robot.Constants;
 
 public class ExtendIntake extends CommandBase {
   private Intake m_intake;
@@ -24,6 +25,7 @@ public class ExtendIntake extends CommandBase {
   @Override
   public void execute() {
     m_intake.extendIntake();
+    m_intake.setRollerSpeed(Constants.INTAKE_SPEED_SCALAR);
   }
 
   // Called once the command ends or is interrupted.

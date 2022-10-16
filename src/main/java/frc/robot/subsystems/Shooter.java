@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import javax.naming.ldap.ControlFactory;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -90,6 +92,7 @@ public class Shooter extends SubsystemBase {
 
   public boolean feed(double speed, int cycles){
     for(int i = 0; i< cycles; i++){
+      System.out.println("new cycle");
       boolean isOpen = false;
       while(true){
         feedMotor.set(speed);
@@ -103,6 +106,24 @@ public class Shooter extends SubsystemBase {
       }
     }
     return true; 
+  }
+
+
+  public boolean newFeed(double speed, int cycles){
+    boolean countClicks = false;
+    int clicks = 0; 
+    while(clicks < cycles){
+      feedMotor.set(speed);
+      if(!feedLimitSwitch.get()){
+        countClicks = true;
+      }
+      else if(countClicks){
+        countClicks = false;
+        clicks ++;
+      }
+
+    }
+    return true;
   }
 }
 

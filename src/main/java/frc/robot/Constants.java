@@ -44,7 +44,7 @@ public static final double INTAKE_SPEED_SCALAR = -.6;
 public static final double INDEX_SPEED_SCALAR = .2;
 public static final double CLIMB_SPEED_SCALAR = .7;
 public static final double FLYWHEEL_LOW_PORT_SCALAR = .55;
-public static final double FLYWHEEL_HIGH_PORT_SCALAR = 1;
+public static final double FLYWHEEL_HIGH_PORT_SCALAR = .9;
 public static final double SHOOTER_FEED_SPEED = -.2;
 public static final double AUTONOMOUS_DRIVE_SPEED = .5;
 

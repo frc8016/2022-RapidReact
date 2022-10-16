@@ -5,26 +5,28 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.Shooter;
 
-public class RetractIntake extends CommandBase {
-  private Intake m_intake;
-  /** Creates a new RetractIntake. */
-  public RetractIntake(Intake intake) {
-    m_intake = intake;
-    addRequirements(intake);
+public class DriveHighPort extends CommandBase {
+
+  DriveBase m_driveBase = new DriveBase();
+  /** Creates a new DriveHighPort. */
+  public DriveHighPort(DriveBase driveBase ) {
+    m_driveBase = driveBase;
+    addRequirements(driveBase);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intake.retractIntake();
-    m_intake.setRollerSpeed(0);
+    m_driveBase.driveToDistance(8);
   }
 
   // Called once the command ends or is interrupted.
@@ -34,6 +36,6 @@ public class RetractIntake extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_driveBase.getAtLocation();
   }
 }
