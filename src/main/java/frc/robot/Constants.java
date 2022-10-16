@@ -54,6 +54,7 @@ public static final int L_PNEUMATIC_REVERSE_CHANNEL = 1;
 public static final int R_PNEUMATIC_FORWARD_CHANNEL = 2;
 public static final int R_PNEUMATIC_REVERSE_CHANNEL = 3;
 public static final int FEED_LIMIT_SWITCH_PORT = 0;
+public static final double driveTurnScalar = 0.75;
 
 
 

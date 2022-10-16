@@ -44,7 +44,7 @@ public class DriveBase extends SubsystemBase {
 
   public void arcadeDrive(double speed, double rot){
     rightControllerGroup.setInverted(true);
-    differentialDrive.arcadeDrive(-speed, rot);
+    differentialDrive.arcadeDrive(-speed, rot * Constants.driveTurnScalar);
     SmartDashboard.putNumber("leftEncoderRotations", driveLeftBack.getSelectedSensorPosition()/4096);
     SmartDashboard.putNumber("rightEncoderRotations", driveRightFront.getSelectedSensorPosition()/4096);
 

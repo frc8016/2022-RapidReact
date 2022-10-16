@@ -31,7 +31,12 @@ public class AutonomousCommand extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       
-      new ParallelRaceGroup(new HighPortShoot(m_shooter, 4), new RunIndex(m_index)), 
+      new ParallelRaceGroup(new SequentialCommandGroup(
+        new HighPortShoot(shooter, 1), 
+        new HighPortShoot(shooter, 1), 
+        new HighPortShoot(shooter, 1), 
+        new HighPortShoot(shooter, 1)), 
+        new HighPortShoot(m_shooter, 4), new RunIndex(m_index)), 
       new AutonomousRetreat(m_driveBase)
       );
   }
